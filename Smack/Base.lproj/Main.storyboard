@@ -119,6 +119,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="qmB-t3-poi" id="rit-2E-LI2"/>
+                        <outlet property="userImg" destination="gtG-hZ-gGE" id="yac-j5-ne2"/>
                         <segue destination="0kj-mn-Cfy" kind="show" identifier="toLogin" id="Gg8-uA-tkD"/>
                     </connections>
                 </viewController>
@@ -197,7 +198,7 @@
                                         </constraints>
                                         <color key="textColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1Q-yF-YqG">
                                         <rect key="frame" x="0.0" y="84" width="250" height="2"/>
@@ -224,10 +225,18 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginPressed:" destination="0kj-mn-Cfy" eventType="touchUpInside" id="PUi-A7-fvF"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="B1Z-QA-xCj">
+                                <rect key="frame" x="169" y="215" width="37" height="37"/>
+                                <color key="color" red="0.2901960784" green="0.30196078430000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="B1Z-QA-xCj" firstAttribute="centerY" secondItem="1Xp-uu-9PS" secondAttribute="centerY" constant="-100" id="35d-iQ-lhb"/>
                             <constraint firstItem="Ejz-IC-nyH" firstAttribute="top" secondItem="1Xp-uu-9PS" secondAttribute="topMargin" constant="8" id="AEA-34-8mG"/>
                             <constraint firstItem="Xdc-9L-ydi" firstAttribute="centerX" secondItem="1Xp-uu-9PS" secondAttribute="centerX" id="VjQ-8E-RaH"/>
                             <constraint firstItem="ddE-GW-zki" firstAttribute="centerX" secondItem="1Xp-uu-9PS" secondAttribute="centerX" id="ZS2-m2-42U"/>
@@ -239,10 +248,14 @@
                             <constraint firstItem="2aS-8C-MDO" firstAttribute="centerX" secondItem="1Xp-uu-9PS" secondAttribute="centerX" id="rqj-Fm-Ngo"/>
                             <constraint firstItem="OfR-5L-tFA" firstAttribute="centerX" secondItem="1Xp-uu-9PS" secondAttribute="centerX" id="w6Y-SV-yE9"/>
                             <constraint firstItem="Xdc-9L-ydi" firstAttribute="centerX" secondItem="1Xp-uu-9PS" secondAttribute="centerX" id="wQP-fH-eXm"/>
+                            <constraint firstItem="B1Z-QA-xCj" firstAttribute="centerX" secondItem="1Xp-uu-9PS" secondAttribute="centerX" id="zBb-dg-4ct"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bVp-3y-C0a"/>
                     </view>
                     <connections>
+                        <outlet property="passwordTxt" destination="Phl-ZS-Kd2" id="HQE-Gh-vrx"/>
+                        <outlet property="spinner" destination="B1Z-QA-xCj" id="cOu-gb-zOu"/>
+                        <outlet property="usernameTxt" destination="1Xh-cK-Mui" id="INo-dh-Bar"/>
                         <segue destination="LDZ-IY-64W" kind="show" identifier="toCreateAccount" id="0df-nO-c99"/>
                     </connections>
                 </viewController>
