@@ -8,14 +8,17 @@
 
 import UIKit
 
-class ChannelVC: UIViewController {
+class ChannelVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var loginBtn: UIButton!
     
     @IBOutlet var userImg: CircleImage!
     @IBAction func prepareforUnwind(segue:UIStoryboardSegue){}
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
     self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
     NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_notif:)), name: NOTIF_USER_DATA_DIDCHANGE, object: nil)
         
@@ -58,5 +61,18 @@ class ChannelVC: UIViewController {
             userImg.backgroundColor = UIColor.clear
             
         }
+        
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell  = tableView.dequeueReusableCell(withIdentifier: "channellCell", for: indexPath) as? ChannelCell {
+            let channel = MessageService.instance.channels[indexPath.row]
+            cell.configureCell(channel: channel)
+            return cell
+        }else {
+            return UITableViewCell()
+        }
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.channels.count
     }
 }
